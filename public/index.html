@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <title>KRB Scripts</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRB Scripts - Dark Fanciful</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    🔥 KRB Scripts
-    <button id="admin-btn" style="display:none" onclick="location.href='/admin'">
-      لوحة الأدمن
-    </button>
-    <a href="/logout">تسجيل خروج</a>
-  </header>
 
-  <input id="q" placeholder="ابحث عن سكربت..." />
-  <div id="list"></div>
+<header>
+  <div class="logo">🔥 KRB Scripts</div>
+  <div class="nav-buttons">
+    <button id="admin-btn" style="display:none">⚙️ لوحة الأدمن</button>
+    <a href="/logout" class="logout-btn">🚪 تسجيل خروج</a>
+  </div>
+</header>
 
-  <script src="app.js"></script>
+<section class="search-section">
+  <input type="text" id="q" placeholder="ابحث عن السكربت..." />
+</section>
+
+<section id="scripts-container" class="grid-container">
+  <!-- البطاقات تظهر هنا -->
+</section>
+
+<script src="app.js"></script>
 </body>
 </html>
