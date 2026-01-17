@@ -1,0 +1,22 @@
+body {
+  background:#0f172a;
+  color:white;
+  font-family:system-ui;
+}
+header {
+  background:#1e293b;
+  padding:15px;
+  display:flex;
+  gap:15px;
+}
+input {
+  width:90%;
+  margin:20px;
+  padding:12px;
+}
+.card {
+  background:#1e293b;
+  margin:15px;
+  padding:15px;
+  border-radius:10px;
+}
