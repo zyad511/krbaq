@@ -1,28 +1,33 @@
-const API = ""; // نفس الموقع
+const API = "/KRBx9A2QmLz"; // مسار API السري
 
-fetch("/me").then(r=>r.json()).then(u=>{
-  if (u.username === "944b") {
-    document.getElementById("admin-btn").style.display = "inline";
+// إظهار زر الأدمن
+fetch("/me").then(r => r.json()).then(user => {
+  if (user.username === "944b") {
+    document.getElementById("admin-btn").style.display = "inline-block";
   }
 });
 
-document.getElementById("q").oninput = async e => {
-  const q = e.target.value;
-  const r = await fetch(`${API}${location.pathname.includes("admin") ? "" : ""}${"/"}${""}`);
-  const res = await fetch(`${"/"}${""}`);
-};
+const container = document.getElementById("scripts-container");
+const input = document.getElementById("q");
 
-document.getElementById("q").addEventListener("input", async e => {
-  const q = e.target.value;
-  const r = await fetch(`${location.origin}${window.SECRET_PATH || ""}`);
-});
+async function searchScripts(q) {
+  const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
+  const data = await res.json();
 
-document.getElementById("q").oninput = async e => {
-  const q = e.target.value;
-  const r = await fetch(`${window.location.origin}${window.SECRET_PATH || ""}`);
-};
+  container.innerHTML = "";
+  data.forEach(script => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${script.image || 'https://i.pravatar.cc/300'}" alt="${script.title}">
+      <h3>${script.title}</h3>
+      <p>${script.description || 'بدون وصف'}</p>
+      <button onclick="navigator.clipboard.writeText('${script.rawScript}')">
+        📋 نسخ السكربت
+      </button>
+    `;
+    container.appendChild(card);
+  });
+}
 
-document.getElementById("q").oninput = async e => {
-  const q = e.target.value;
-  const r = await fetch(`${window.location.origin}${window.SECRET_PATH || ""}`);
-};
+input.addEventListener("input", e => searchScripts(e.target.value));
